@@ -1,0 +1,16 @@
+services:
+  go-builder:
+    build:
+      context: .  # Dockerfile が存在するディレクトリ (myscreenshot-tool/)
+      dockerfile: Dockerfile
+    environment:
+      - GOOS=windows
+      - GOARCH=amd64
+      - CGO_ENABLED=1
+      - CC=x86_64-w64-mingw32-gcc
+    volumes:
+      # ホストの現在のディレクトリ（myscreenshot-tool/）をコンテナの/appにマウント
+      # これにより、ビルド成果物もホストの同じディレクトリに出力される
+      - .:/app
+    # working_dir: /app # DockerfileでWORKDIRが設定されているのでここでは不要だが、明示的に設定しても良い
+    command: sh -c "go build -x -ldflags=\"-H windowsgui\" -buildvcs=false -o myscreenshot.exe"
