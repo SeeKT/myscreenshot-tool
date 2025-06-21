@@ -33,3 +33,9 @@ $ docker compose up --build go-builder
 GUI で保存先、キャプチャ間隔、取得時間、キャプチャするウィンドウを設定すると、保存先に指定したフォルダにスクリーンショットが保存されます。
 
 ![](demo/demo.gif)
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+Copyright (c) 2025 SeeKT
